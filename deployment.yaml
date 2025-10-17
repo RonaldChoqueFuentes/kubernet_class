@@ -21,3 +21,12 @@ spec:
         image: nginx:alpine
         ports:
         - containerPort: 80
+
+        volumeMounts:
+          - name: nginx-index-volume
+            mountPath: /usr/share/nginx/html/index.html
+            subPath: index.html
+    volumes:
+      - name: nginx-index-volume
+        configMap:
+          name: nginx-index-config
