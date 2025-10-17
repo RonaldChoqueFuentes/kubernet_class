@@ -4,7 +4,7 @@ metadata:
   name: webapp-deployment
   labels:
     app: webapp
-    env: homework
+
 spec:
   replicas: 3
   selector:
@@ -14,19 +14,9 @@ spec:
     metadata:
       labels:
         app: webapp
-        env: homework
     spec:
       containers:
       - name: nginx
         image: nginx:alpine
         ports:
         - containerPort: 80
-
-        volumeMounts:
-          - name: nginx-index-volume
-            mountPath: /usr/share/nginx/html/index.html
-            subPath: index.html
-    volumes:
-      - name: nginx-index-volume
-        configMap:
-          name: nginx-index-config
